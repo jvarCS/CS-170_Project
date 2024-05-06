@@ -6,7 +6,7 @@ using namespace std;
 float euclidean(char [3][3], char[3][3]);
 int findPlace(char [3][3], char, float &);
 float findGPlace(char [3][3], char, float &);
-
+void add(int **);
 /*
     4 5 7      (0 + 1)2 +      
     3 1 2
@@ -15,10 +15,17 @@ float findGPlace(char [3][3], char, float &);
 
 
 int main() {
-    char x[3][3] = {{'7','2','4'},{'5','x','6'},{'8','3','1'}};
+    char x[3][3];
     char right[3][3] = {{'x','1','2'},{'3','4','5'},{'6','7','8'}};
-    string temp;
+    string temp ="7245x6831";
     float sum = 0;
+
+    int *h;
+    add(&h);
+
+    cout << *h;
+    delete h;
+
 
     //sum += sqrt((0-2)*(0-2) + (0-1)*(0-1));
     //cout << sum;
@@ -31,13 +38,17 @@ int main() {
 
     //cout << temp;
 
-    float ans = euclidean(x,right);
+    //float ans = euclidean(x,right);
 
-    cout << "Euclidean distance is " << ans;
+    //cout << "Euclidean distance is " << ans;
 
     return 0;
 }
 
+void add(int **h) {
+    *h = new int;
+    **h = 7;
+}
 
 
 float euclidean(char arr[3][3], char r[3][3]) {
