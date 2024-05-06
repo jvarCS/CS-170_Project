@@ -1,7 +1,15 @@
 #include <iostream>
 #include <cmath>
+#include <queue>
+#include <algorithm>
+#include <iterator>
 
-using namespace std;
+using std::sort;
+using std::deque;
+using std::string;
+using std::cout;
+
+
 
 float euclidean(char [3][3], char[3][3]);
 int findPlace(char [3][3], char, float &);
@@ -13,6 +21,17 @@ void add(int **);
     8 6 x
 */
 
+struct Process{
+    int pid;
+    int burst;
+    int arrival;
+
+
+};
+
+bool operator<(const Process& a, const Process& b) {
+          return a.arrival < b.arrival;
+    }
 
 int main() {
     char x[3][3];
@@ -20,11 +39,40 @@ int main() {
     string temp ="7245x6831";
     float sum = 0;
 
-    int *h;
-    add(&h);
+    deque<Process> d;
 
-    cout << *h;
-    delete h;
+    Process pro;
+    Process pro1;
+    Process pro2;
+    Process pro3;
+    Process pro4;
+    pro.arrival = 5;
+    pro2.arrival = 1;
+    pro3.arrival = 9;
+    pro3.arrival = -3;
+    pro4.arrival = 10;
+
+    d.push_back(pro);
+    d.push_back(pro1);
+    d.push_back(pro2);
+    d.push_back(pro3);
+    d.push_back(pro4);
+
+
+    sort(d.begin(),d.end());
+
+    for (int i = 0; i < 5; i++) {
+        Process temp = d.front();
+        cout << d.front().arrival << " ";
+        d.pop_front();
+    }
+    
+
+    int *h;
+    //add(&h);
+
+    //cout << *h;
+    //delete h;
 
 
     //sum += sqrt((0-2)*(0-2) + (0-1)*(0-1));
