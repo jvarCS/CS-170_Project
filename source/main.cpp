@@ -31,31 +31,37 @@ int main() {
 }
 
 Problem *menu(Boards **start) {
-    char choice, algo;
+    char choice, algo, trace;
     cout << "Welcome to 862242193 8 puzzle solver.\n"
          << "Enter '1' to use Uniform Search Cost, '2' for Misplace Tile A*, '3' for Euclidean A*\n";
     cin  >> algo;
     cout << "Enter '1' to use default puzzle, or '2' to enter your own puzzle.\n";
     cin  >> choice;
+    cout << "Enter '1' to solve showing all boards (Slower), or '2' to only show starting and goal (Much faster).\n";
+    cin  >> trace;
     
     // If user enters 1, we use default board size and numbering
     if (choice == '1') {
-        Problem *ex = new Problem(algo);
+        Problem *ex = new Problem(algo, trace);
         *start = new Boards();
         return ex;
     }
     else if (choice == '2') {   // User entered 2 so we use customized board
         int size;   // Get NxN size
-        string nums;    // Get start ordering of numbers
+        vector<string> nums;    // Get start ordering of numbers
+        string temp;
         cout << "The board will be of NxN measurement. Please enter the value for N.\n";
         cin >> size;
-        Problem *ex = new Problem(size,algo);   // Create Problem instance
-        cout << "Enter the numbers in the desired order, with 'x' representing the blank space.\n"
+        Problem *ex = new Problem(size,algo,trace);   // Create Problem instance
+        cout << "Enter the numbers in the desired order one by one, with 'x' representing the blank space.\n"
              << "Example: 123\n"
              << "         456\n"
              << "         78x\n"
-             << "for a 3x3 board would be entered as '12345678x'.\n";
-        cin >> nums;
+             << "for a 3x3 board would be entered as '1' 'ENTER' '2' 'ENTER' etc'.\n";
+        for (int i = 0; i < size*size; i++) {
+            cin >> temp;
+            nums.push_back(temp);
+        }
         *start = new Boards(nums,size); // Create startin board
         return ex;
     }

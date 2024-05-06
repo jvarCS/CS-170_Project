@@ -13,14 +13,15 @@ class Boards {
         int priority;
         int depth;
         int hOn;
-        char **board;
+        string **board;
     public:
         Boards();
-        Boards(string, int);
+        Boards(vector<string>, int);
         void setSize(int);
         int getSize();
         void print();
-        char getNum(int,int);
+        string getNum(int,int);
+        vector<string> getVector();
         string getString();
         void swapNums(int,int,int,int);
         void setPriority(int,int);

@@ -18,9 +18,10 @@ class Problem {
         int solDepth;
         int expand;
         int maxQ;
+        char trace;
     public:
-        Problem(char);
-        Problem(int,char);
+        Problem(char, char);
+        Problem(int,char,char);
         bool checkBoard(Boards *);
         int findX(int&, Boards *);
         bool moveRight(Boards *);
@@ -29,8 +30,8 @@ class Problem {
         bool moveUp(Boards *);
         bool solve(Boards *);
         int euclidean(Boards *);
-        int findAPlace(Boards *,char,int &);
-        int findGPlace(Boards *,char,int &);
+        int findAPlace(Boards *,string,int &);
+        int findGPlace(Boards *,string,int &);
         void sortQ(priority_queue<Boards *>);
         int misplaced(Boards *);
         int getExpand();
